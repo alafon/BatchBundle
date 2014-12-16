@@ -205,9 +205,15 @@ class ItemStep extends AbstractStep
 
                 $itemsToWrite[] = $processedItem;
                 $writeCount++;
-                if (0 === $writeCount % $this->batchSize) {
+                if (0 === $writeCount % $this->batchSize)
+                {
                     $this->write($itemsToWrite);
                     $itemsToWrite = array();
+                    $this->getJobRepository()->updateStepExecution($stepExecution);
+
+                }
+                elseif (0 === ($stepExecution->getCurrentExecutionTime() % 10))
+                {
                     $this->getJobRepository()->updateStepExecution($stepExecution);
                 }
             }

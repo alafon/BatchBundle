@@ -363,6 +363,18 @@ class StepExecution
     }
 
     /**
+     * Return the difference in seconds between now and the startTime
+     *
+     * @return int
+     */
+    public function getCurrentExecutionTime()
+    {
+        $now = new \DateTime('now');
+        $diff = $now->diff($this->startTime);
+        return (int)$diff->format('%s');
+    }
+
+    /**
      * Returns the current status of this step
      *
      * @return BatchStatus the current status of this step

@@ -1,6 +1,13 @@
 CHANGELOG
 =========
 
+0.3.x
+-----
+
+### Improvements
+
+ - Update JobExecution entity in the DB backend regardless of the batch size
+
 0.3.0
 ------------------
 
